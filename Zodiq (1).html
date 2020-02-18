@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Zodiac</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <script>
+        function getRndColor(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function calc() {
+            var bDay = document.getElementById("dateBd").value;
+            var zodiac = ["Овен", "Водолей", "Близнаци", "Рак", "Лъв", "Дева", "Везни", "Скорпион", "Стрелец", "Козирог", "Телец", "Риби"];
+            var colors = ["green", "blue", "purple", "pink", "orange", "black", "silver"];
+            var myBd = new Date(bDay);
+            var mySign = (myBd.getDate() >= 21 ? myBd.getMonth()+1  : myBd.getMonth());
+
+            var msg = "Your astro sign is " + zodiac[mySign];
+            msg = '<span style="color:' + colors[getRndColor(0, colors.length) ] + ';">' + msg + '</span>';
+            document.getElementById("result").innerHTML = msg;
+        }
+    </script>
+    <h2>Въведете рожденната си дата, за да разберете коя зодия сте:</h2>
+    <input type="date" name="date" id="dateBd" value="2000-07-03" />
+    <p>Вашата зодия е: </p>
+    <input type="button" onclick="calc()" value="Show zodiac sign" />
+    <p id="result"></p>
+</body>
+
+</html>
